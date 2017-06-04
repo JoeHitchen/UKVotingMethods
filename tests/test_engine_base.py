@@ -1,5 +1,5 @@
 from unittest import TestCase
-from ..voting_engines import EngineBase
+from voting_engines import EngineBase
 
 
 

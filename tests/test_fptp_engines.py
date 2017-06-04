@@ -1,5 +1,5 @@
 from unittest import TestCase
-from ukvotingmethods.voting_engines import MFPTP, FPTP
+from voting_engines import MFPTP, FPTP
 
 
 # Multiple-First-Past-The-Post tests
