@@ -1,0 +1,5 @@
+/UKVoting/*
+*__pycache__*
+*.pyc
+.*
+!.gitignore
