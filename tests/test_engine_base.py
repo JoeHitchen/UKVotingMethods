@@ -161,6 +161,10 @@ class Add_Redistribution_Matrix__Tests(TestCase):
         })
         self.assertEqual(self.engine.redistribution_matrix, {'A': {'B': 1, 'C': 3}})
 
+        # Test as initialisation
+        engine = EngineBase(['A', 'B', 'C'], redistribution_matrix = {'A': {'B': 1, 'C': 3}})
+        self.assertEqual(engine.redistribution_matrix, {'A': {'B': 1, 'C': 3}})
+
 
     # Using 'None' as a 'from' key
     def test__from_none(self):
@@ -171,6 +175,13 @@ class Add_Redistribution_Matrix__Tests(TestCase):
             self.engine.add_redistribution_matrix({
                 None: {'B': 1, 'C': 3}
             })
+
+        # Test as initialisation
+        with self.assertRaisesRegex(Exception, 'From-candidate not recognised: "None"'):
+            EngineBase(
+                ['A', 'B', 'C'],
+                redistribution_matrix = {None: {'B': 1, 'C': 3}}
+            )
 
 
     # Unknown candidate as a 'from' key
@@ -183,6 +194,13 @@ class Add_Redistribution_Matrix__Tests(TestCase):
                 'D': {'B': 1, 'C': 3}
             })
 
+        # Test as initialisation
+        with self.assertRaisesRegex(Exception, 'From-candidate not recognised: "D"'):
+            EngineBase(
+                ['A', 'B', 'C'],
+                redistribution_matrix = {'D': {'B': 1, 'C': 3}}
+            )
+
 
     # Using 'None' as a 'to' key
     def test__to_none(self):
@@ -192,6 +210,12 @@ class Add_Redistribution_Matrix__Tests(TestCase):
         self.engine.add_redistribution_matrix({
             'A': {'B': 1, 'C': 3, None: 2}
         })
+
+        # Test as initialisation
+        EngineBase(
+            ['A', 'B', 'C'],
+            redistribution_matrix = {'A': {'B': 1, 'C': 3, None: 2}}
+        )
 
 
     # Unknown candidate as a 'to' key
@@ -203,6 +227,13 @@ class Add_Redistribution_Matrix__Tests(TestCase):
             self.engine.add_redistribution_matrix({
                 'A': {'B': 1, 'C': 3, 'D': 2}
             })
+
+        # Test as initialisation
+        with self.assertRaisesRegex(Exception, 'To-candidate not recognised: "D"'):
+            EngineBase(
+                ['A', 'B', 'C'],
+                redistribution_matrix = {'A': {'B': 1, 'C': 3, 'D': 2}}
+            )
 
 
 
