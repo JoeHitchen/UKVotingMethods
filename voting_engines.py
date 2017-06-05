@@ -12,17 +12,16 @@ class EngineBase():
     """
 
     # Initialisation routine
-    def __init__(self, seats, candidates):
+    def __init__(self, candidates, seats = 1):
         """
         This method creates an election engine from inputs representing the number of seats and the list of candidates.
 
         Parameters
         ------
-        seats: int
-            The number of seats to be elected.
         candidates: list <candidate obj>
             The list of candidates standing.
-
+        seats: int (default = 1)
+            The number of seats to be elected.
         """
 
         # Read arguments
@@ -149,11 +148,7 @@ class MFPTP(EngineBase):
 # First-Past-The-Post election engine
 class FPTP(MFPTP):
     """This class is for standard first-past-the-post elections where a single candidate is elected."""
-
-    # Initialisation method
-    def __init__(self, candidates):
-        """This method is a wrapper for the parent method with the number of seats set."""
-        super().__init__(1, candidates)
+    pass
 
 
 
@@ -228,9 +223,5 @@ class AV(STV):
     This class is for alternative-vote elections.
     These are a special case of single-transferable-vote elections where only one seat is available.
     """
-
-    # Initialisation method
-    def __init__(self, candidates):
-        """This method is a wrapper for the parent method with the number of seats set."""
-        super().__init__(1, candidates)
+    pass
 

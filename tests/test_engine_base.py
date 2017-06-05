@@ -13,7 +13,7 @@ class Add_Votes__Tests(TestCase):
         This method creates an election with one seat for one candidate.
         These settings can be altered in the tests
         """
-        self.engine = EngineBase(1, ['A'])
+        self.engine = EngineBase(['A'])
 
     # Invalid candidate
     def test__invalid_candidate(self):
@@ -110,7 +110,7 @@ class Run_Election__Tests(TestCase):
         This method creates an election for one seat, one candidate and a quota of 5 - A single candidate is needed here to limit elections to one round.
         These settings can be altered in tests.
         """
-        self.engine = EngineBase(1, ['A'])
+        self.engine = EngineBase(['A'])
         self.engine.quota = 5
 
 
@@ -294,7 +294,7 @@ class Find_Winner__Tests(TestCase):
         This method creates an election for one seat, two candidates and a quota of 5.
         These settings can be altered in tests.
         """
-        self.engine = EngineBase(1, ['A', 'B'])
+        self.engine = EngineBase(['A', 'B'])
         self.engine.quota = 5
 
 
@@ -344,7 +344,7 @@ class Find_Loser__Tests(TestCase):
         This method creates an election for one seat, one candidate and a quota of 5 - A single candidate is needed here to limit elections to one round.
         These settings can be altered in tests.
         """
-        self.engine = EngineBase(1, ['A', 'B'])
+        self.engine = EngineBase(['A', 'B'])
         self.engine.quota = 5
 
 
@@ -380,7 +380,7 @@ class Advance_Voting_Round__Tests(TestCase):
         This method creates an election for one seat, one candidate and a quota of 5 - A single candidate is needed here to limit elections to one round.
         These settings can be altered in tests.
         """
-        self.engine = EngineBase(1, ['A', 'B', 'C'])
+        self.engine = EngineBase(['A', 'B', 'C'])
         self.engine.quota = 5
         self.engine.votes = [{'A': 10, 'C': 13, 'B': 4}]
 

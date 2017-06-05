@@ -12,7 +12,7 @@ class Add_Redistribution_Matrix__Tests(TestCase):
         This method creates an STV election with three candidates running for one seat.
         These settings can be altered in the tests.
         """
-        self.engine = STV(1, ['A', 'B', 'C'])
+        self.engine = STV(['A', 'B', 'C'], seats = 1)
 
 
     # Add valid redistribution matrix
@@ -80,7 +80,7 @@ class Redistribute_Votes__Tests(TestCase):
         This method creates an STV election with three candidates running for one seat and the first round of voting complete.
         These settings can be altered in the tests.
         """
-        self.engine = STV(1, ['A', 'B', 'C'])
+        self.engine = STV(['A', 'B', 'C'], seats = 1)
         self.engine.add_votes({'A': 30, 'B': 10, 'C': 20})
 
 
@@ -239,7 +239,7 @@ class STV_Election__Tests(TestCase):
         """Candidate A should be elected automatically."""
 
         # Setup election
-        election = STV(1, ['A'])
+        election = STV(['A'], seats = 1)
         election.add_votes({'A': 10})
         election.run_election()
 
@@ -255,7 +255,7 @@ class STV_Election__Tests(TestCase):
         """Candidate A should be elected outright."""
 
         # Setup election
-        election = STV(1, ['A', 'B'])
+        election = STV(['A', 'B'], seats = 1)
         election.add_votes({'A': 10, 'B': 5})
         election.run_election()
 
@@ -271,7 +271,7 @@ class STV_Election__Tests(TestCase):
         """Candidate B should be elected outright."""
 
         # Setup election
-        election = STV(1, ['A', 'B'])
+        election = STV(['A', 'B'], seats = 1)
         election.add_votes({'A': 5, 'B': 10})
         election.run_election()
 
@@ -290,7 +290,7 @@ class STV_Election__Tests(TestCase):
         """
 
         # Setup election
-        election = STV(1, ['A', 'B'])
+        election = STV(['A', 'B'], seats = 1)
         election.add_votes({'A': 10, 'B': 10})
         election.run_election()
 
@@ -306,7 +306,7 @@ class STV_Election__Tests(TestCase):
         """Candidate B is over quota should be elected outright."""
 
         # Setup election
-        election = STV(1, ['A', 'B', 'C'])
+        election = STV(['A', 'B', 'C'], seats = 1)
         election.add_votes({'A': 3, 'B': 14, 'C': 4})
         election.run_election()
 
@@ -322,7 +322,7 @@ class STV_Election__Tests(TestCase):
         """Candidate B is on quota should be elected outright."""
 
         # Setup election
-        election = STV(1, ['A', 'B', 'C'])
+        election = STV(['A', 'B', 'C'], seats = 1)
         election.add_votes({'A': 3, 'B': 8, 'C': 4})
         election.run_election()
 
@@ -338,7 +338,7 @@ class STV_Election__Tests(TestCase):
         """Candidate B has the most votes so should be elected after A and C have been eliminated."""
 
         # Setup election
-        election = STV(1, ['A', 'B', 'C'])
+        election = STV(['A', 'B', 'C'], seats = 1)
         election.add_votes({'A': 3, 'B': 7, 'C': 4})
         election.run_election()
 
@@ -357,7 +357,7 @@ class STV_Election__Tests(TestCase):
         """
 
         # Setup election
-        election = STV(1, ['A', 'B', 'C'])
+        election = STV(['A', 'B', 'C'], seats = 1)
         election.add_votes({'A': 4, 'B': 7, 'C': 5})
         election.add_redistribution_matrix({'A': {'C': 1}})
         election.run_election()
@@ -377,7 +377,7 @@ class STV_Election__Tests(TestCase):
         """
 
         # Setup election
-        election = STV(1, ['A', 'B', 'C'])
+        election = STV(['A', 'B', 'C'], seats = 1)
         election.add_votes({'A': 4, 'B': 7, 'C': 5})
         election.add_redistribution_matrix({'A': {'C': 1, 'B': 3}})
         election.run_election()
@@ -394,7 +394,7 @@ class STV_Election__Tests(TestCase):
         """Both candidates should be elected by default."""
 
         # Setup election
-        election = STV(2, ['A', 'B'])
+        election = STV(['A', 'B'], seats = 2)
         election.add_votes({'A': 10, 'B': 15})
         election.run_election()
 
@@ -410,7 +410,7 @@ class STV_Election__Tests(TestCase):
         """Candidates A and C should be elected outright."""
 
         # Setup election
-        election = STV(2, ['A', 'B', 'C'])
+        election = STV(['A', 'B', 'C'], seats = 2)
         election.add_votes({'A': 30, 'B': 3, 'C': 31})
         election.run_election()
 
@@ -429,7 +429,7 @@ class STV_Election__Tests(TestCase):
         """
 
         # Setup election
-        election = STV(2, ['A', 'B', 'C'])
+        election = STV(['A', 'B', 'C'], seats = 2)
         election.add_votes({'A': 15, 'B': 3, 'C': 31})
         election.run_election()
 
@@ -448,7 +448,7 @@ class STV_Election__Tests(TestCase):
         """
 
         # Setup election
-        election = STV(2, ['A', 'B', 'C'])
+        election = STV(['A', 'B', 'C'], seats = 2)
         election.add_votes({'A': 10, 'B': 3, 'C': 31})
         election.add_redistribution_matrix({'C': {'A': 1}})
         election.run_election()
@@ -468,7 +468,7 @@ class STV_Election__Tests(TestCase):
         """
 
         # Setup election
-        election = STV(2, ['A', 'B', 'C'])
+        election = STV(['A', 'B', 'C'], seats = 2)
         election.add_votes({'A': 10, 'B': 3, 'C': 31})
         election.add_redistribution_matrix({'C': {'A': 1, 'B': 3}})
         election.run_election()
@@ -488,7 +488,7 @@ class STV_Election__Tests(TestCase):
         """
 
         # Setup election
-        election = STV(2, ['A', 'B', 'C'])
+        election = STV(['A', 'B', 'C'], seats = 2)
         election.add_votes({'A': 10, 'B': 3, 'C': 31})
         election.add_redistribution_matrix({'C': {None: 1}})
         election.run_election()
@@ -501,14 +501,14 @@ class STV_Election__Tests(TestCase):
 
 
     # Three candidates for two seats, with partially dropped excess
-    def test__two_seats__three_candidates__dropped_excess(self):
+    def test__two_seats__three_candidates__partially_dropped_excess(self):
         """
         Candidate C should be elected outright, with some excess going to B.
         Candidate B should then be eliminated and Candidate A elected by default.
         """
 
         # Setup election
-        election = STV(2, ['A', 'B', 'C'])
+        election = STV(['A', 'B', 'C'], seats = 2)
         election.add_votes({'A': 10, 'B': 3, 'C': 31})
         election.add_redistribution_matrix({'C': {None: 2, 'B': 2}})
         election.run_election()
@@ -528,7 +528,7 @@ class STV_Election__Tests(TestCase):
         """
 
         # Setup election
-        election = STV(2, ['A', 'B', 'C', 'D'])
+        election = STV(['A', 'B', 'C', 'D'], seats = 2)
         election.add_votes({'A': 15, 'B': 14, 'C': 13, 'D': 16})
         election.run_election()
 
