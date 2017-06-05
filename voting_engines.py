@@ -91,40 +91,49 @@ class EngineBase():
     def run_election(self):
         """
         This method is the main election routine.
-        It iterates the following cycle:
-            1. Test for "default winners", where the number of remaining seats equals the number of remaining candidates.
-            2. Try to find a "winner" who has the most votes and more votes than the quota.
-            3. Eliminate the "loser" with the fewest votes.
-        Iterations will be performed until all seats are filled or the number of iterations excedes the number of candidates (whichever is first).
+        It calls single_voting_round() repeatedly until all seats are filled or the number of iterations excedes the number of candidates (whichever is first).
         """
 
         # Loop over voting rounds
         for i in range(0, len(self.candidates)):
-
-            # Get votes for this round
-            round_votes = self.votes[-1]
-
-            # Winners by default
-            if self.seats - len(self.elected) >= len(round_votes):
-                self.elected.extend(round_votes.keys())
+            complete = self.single_voting_round()
+            if complete:
                 break
 
-            # Elect winner
-            winner = self.find_winner(round_votes)
-            if winner:
-                self.elected.append(winner)
-                if self.seats == len(self.elected):
-                    break
-                self.redistribute_votes(
-                    winner,
-                    votes_to_share = self.votes[-1][winner] - self.quota
-                )
-                continue
 
-            # Eliminate loser
-            loser = self.find_loser(round_votes)
-            self.eliminated.append(loser)
-            self.redistribute_votes(loser)
+    # Single voting round method
+    def single_voting_round(self):
+        """
+        This method performs a single round of voting by performing the following steps:
+            1. Test for "default winners", where the number of remaining seats equals the number of remaining candidates.
+            2. Try to find a "winner" who has the most votes and more votes than the quota.
+            3. Eliminate the "loser" with the fewest votes.
+        """
+
+        # Get votes for the round
+        round_votes = self.votes[-1]
+
+        # Winners by default
+        if self.seats - len(self.elected) >= len(round_votes):
+            self.elected.extend(round_votes.keys())
+            return True
+
+        # Elect winner
+        winner = self.find_winner(round_votes)
+        if winner:
+            self.elected.append(winner)
+            if self.seats == len(self.elected):
+                return True
+            self.redistribute_votes(
+                winner,
+                votes_to_share = round_votes[winner] - self.quota
+            )
+            return False
+
+        # Eliminate loser
+        loser = self.find_loser(round_votes)
+        self.eliminated.append(loser)
+        self.redistribute_votes(loser)
 
 
     # Find winner method

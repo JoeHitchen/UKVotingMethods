@@ -167,17 +167,17 @@ class Add_Redistribution_Matrix__Tests(TestCase):
 
 
 
-# EngineBase.run_election() tests
-class Run_Election__Tests(TestCase):
-    """This test class checks the behavour of EngineBase.run_election() under conditions which force a single election round."""
+# EngineBase.single_voting_round() tests
+class Single_Voting_Round__Tests(TestCase):
+    """This test class checks the behavour of EngineBase.single_voting_round()."""
 
     # Prepare for tests
     def setUp(self):
         """
-        This method creates an election for one seat, one candidate and a quota of 5 - A single candidate is needed here to limit elections to one round.
+        This method creates an election for one seat, two candidates and a quota of 5.
         These settings can be altered in tests.
         """
-        self.engine = EngineBase(['A'])
+        self.engine = EngineBase(['A', 'B'])
         self.engine.quota = 5
 
 
@@ -187,7 +187,7 @@ class Run_Election__Tests(TestCase):
 
         # Set votes and run election
         self.engine.votes = [{'A': 10}]
-        self.engine.run_election()
+        self.engine.single_voting_round()
 
         # Test results
         self.assertEqual(1, len( self.engine.elected ))
@@ -201,7 +201,7 @@ class Run_Election__Tests(TestCase):
 
         # Set votes and run election
         self.engine.votes = [{'A': 5}]
-        self.engine.run_election()
+        self.engine.single_voting_round()
 
         # Test results
         self.assertEqual(1, len( self.engine.elected ))
@@ -215,7 +215,7 @@ class Run_Election__Tests(TestCase):
 
         # Set votes and run election
         self.engine.votes = [{'A': 3}]
-        self.engine.run_election()
+        self.engine.single_voting_round()
 
         # Test results
         self.assertEqual(1, len( self.engine.elected ))
@@ -230,7 +230,7 @@ class Run_Election__Tests(TestCase):
         # Set votes and run election
         self.engine.seats = 2
         self.engine.votes = [{'A': 3}]
-        self.engine.run_election()
+        self.engine.single_voting_round()
 
         # Test results
         self.assertEqual(1, len( self.engine.elected ))
@@ -244,7 +244,7 @@ class Run_Election__Tests(TestCase):
 
         # Set votes and run election
         self.engine.votes = [{'A': 10, 'B': 8}]
-        self.engine.run_election()
+        self.engine.single_voting_round()
 
         # Test results
         self.assertEqual(1, len( self.engine.elected ))
@@ -258,7 +258,7 @@ class Run_Election__Tests(TestCase):
 
         # Set votes and run election
         self.engine.votes = [{'A': 8, 'B': 10}]
-        self.engine.run_election()
+        self.engine.single_voting_round()
 
         # Test results
         self.assertEqual(1, len( self.engine.elected ))
@@ -272,7 +272,7 @@ class Run_Election__Tests(TestCase):
 
         # Set votes and run election
         self.engine.votes = [{'A': 10, 'B': 2}]
-        self.engine.run_election()
+        self.engine.single_voting_round()
 
         # Test results
         self.assertEqual(1, len( self.engine.elected ))
@@ -286,7 +286,7 @@ class Run_Election__Tests(TestCase):
 
         # Set votes and run election
         self.engine.votes = [{'A': 1, 'B': 8}]
-        self.engine.run_election()
+        self.engine.single_voting_round()
 
         # Test results
         self.assertEqual(1, len( self.engine.elected ))
@@ -300,7 +300,7 @@ class Run_Election__Tests(TestCase):
 
         # Set votes and run election
         self.engine.votes = [{'A': 5, 'B': 2}]
-        self.engine.run_election()
+        self.engine.single_voting_round()
 
         # Test results
         self.assertEqual(1, len( self.engine.elected ))
@@ -314,7 +314,7 @@ class Run_Election__Tests(TestCase):
 
         # Set votes and run election
         self.engine.votes = [{'A': 1, 'B': 5}]
-        self.engine.run_election()
+        self.engine.single_voting_round()
 
         # Test results
         self.assertEqual(1, len( self.engine.elected ))
@@ -328,7 +328,7 @@ class Run_Election__Tests(TestCase):
 
         # Set votes and run election
         self.engine.votes = [{'A': 4, 'B': 1}]
-        self.engine.run_election()
+        self.engine.single_voting_round()
 
         # Test results
         self.assertEqual(0, len( self.engine.elected ))
@@ -342,7 +342,7 @@ class Run_Election__Tests(TestCase):
 
         # Set votes and run election
         self.engine.votes = [{'A': 2, 'B': 3}]
-        self.engine.run_election()
+        self.engine.single_voting_round()
 
         # Test results
         self.assertEqual(0, len( self.engine.elected ))
