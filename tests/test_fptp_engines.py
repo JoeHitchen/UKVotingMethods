@@ -1,5 +1,5 @@
 from unittest import TestCase
-from voting_engines import MFPTP
+from voting_engines import EngineBase
 
 
 # Multiple-First-Past-The-Post tests
@@ -11,7 +11,7 @@ class MFPTP_Election__Tests(TestCase):
         """Candidate A should be elected automatically."""
 
         # Setup election
-        election = MFPTP(['A'], seats = 1)
+        election = EngineBase(['A'], seats = 1)
         election.add_votes({'A': 10})
         election.run_election()
 
@@ -27,7 +27,7 @@ class MFPTP_Election__Tests(TestCase):
         """Candidate A should be elected outright."""
 
         # Setup election
-        election = MFPTP(['A', 'B'], seats = 1)
+        election = EngineBase(['A', 'B'], seats = 1)
         election.add_votes({'A': 10, 'B': 5})
         election.run_election()
 
@@ -43,7 +43,7 @@ class MFPTP_Election__Tests(TestCase):
         """Candidate B should be elected outright."""
 
         # Setup election
-        election = MFPTP(['A', 'B'], seats = 1)
+        election = EngineBase(['A', 'B'], seats = 1)
         election.add_votes({'A': 5, 'B': 10})
         election.run_election()
 
@@ -62,7 +62,7 @@ class MFPTP_Election__Tests(TestCase):
         """
 
         # Setup election
-        election = MFPTP(['A', 'B'], seats = 1)
+        election = EngineBase(['A', 'B'], seats = 1)
         election.add_votes({'A': 10, 'B': 10})
         election.run_election()
 
@@ -78,7 +78,7 @@ class MFPTP_Election__Tests(TestCase):
         """Candidate B is over quota should be elected outright. """
 
         # Setup election
-        election = MFPTP(['A', 'B', 'C'], seats = 1)
+        election = EngineBase(['A', 'B', 'C'], seats = 1)
         election.add_votes({'A': 3, 'B': 14, 'C': 4})
         election.run_election()
 
@@ -94,7 +94,7 @@ class MFPTP_Election__Tests(TestCase):
         """Candidate B is on quota should be elected outright."""
 
         # Setup election
-        election = MFPTP(['A', 'B', 'C'], seats = 1)
+        election = EngineBase(['A', 'B', 'C'], seats = 1)
         election.add_votes({'A': 3, 'B': 8, 'C': 4})
         election.run_election()
 
@@ -110,7 +110,7 @@ class MFPTP_Election__Tests(TestCase):
         """Candidate B has the most votes so should be elected after A and C have been eliminated."""
 
         # Setup election
-        election = MFPTP(['A', 'B', 'C'], seats = 1)
+        election = EngineBase(['A', 'B', 'C'], seats = 1)
         election.add_votes({'A': 3, 'B': 7, 'C': 4})
         election.run_election()
 
@@ -126,7 +126,7 @@ class MFPTP_Election__Tests(TestCase):
         """Both candidates should be elected by default."""
 
         # Setup election
-        election = MFPTP(['A', 'B'], seats = 2)
+        election = EngineBase(['A', 'B'], seats = 2)
         election.add_votes({'A': 10, 'B': 15})
         election.run_election()
 
@@ -142,7 +142,7 @@ class MFPTP_Election__Tests(TestCase):
         """Candidates A and C should be elected outright."""
 
         # Setup election
-        election = MFPTP(['A', 'B', 'C'], seats = 2)
+        election = EngineBase(['A', 'B', 'C'], seats = 2)
         election.add_votes({'A': 30, 'B': 3, 'C': 31})
         election.run_election()
 
@@ -161,7 +161,7 @@ class MFPTP_Election__Tests(TestCase):
         """
 
         # Setup election
-        election = MFPTP(['A', 'B', 'C'], seats = 2)
+        election = EngineBase(['A', 'B', 'C'], seats = 2)
         election.add_votes({'A': 15, 'B': 3, 'C': 31})
         election.run_election()
 
@@ -180,7 +180,7 @@ class MFPTP_Election__Tests(TestCase):
         """
 
         # Setup election
-        election = MFPTP(['A', 'B', 'C', 'D'], seats = 2)
+        election = EngineBase(['A', 'B', 'C', 'D'], seats = 2)
         election.add_votes({'A': 15, 'B': 14, 'C': 13, 'D': 16})
         election.run_election()
 

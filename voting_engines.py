@@ -177,17 +177,3 @@ class EngineBase():
             for candidate in new_redist:
                 self.votes[-1][candidate] += votes_to_share * new_redist[candidate]/total_weight
 
-
-
-# Multiple-First-Past-The-Post election engine
-class MFPTP(EngineBase):
-    """This class is for elections where multiple candidates are elected under the first-past-the-post system."""
-    pass
-
-
-
-# Single-Transferable-Vote election engine
-class STV(EngineBase):
-    """This class is for single-transferable-vote elections where losing votes and excess winning votes are redistributed to other candidates."""
-    pass
-
