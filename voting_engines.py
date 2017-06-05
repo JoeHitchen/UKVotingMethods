@@ -30,7 +30,7 @@ class EngineBase():
         redistribution_matrix: dict <candidate: dict <candidate: int> >
             The redistribution matrix for all candidates.
         """
-        ### THIS METHOD IS UNTESTED ###
+        # This method is untested because it's behaviour is trivial #
 
         # Read candidates and number of seats
         self.candidates = candidates
