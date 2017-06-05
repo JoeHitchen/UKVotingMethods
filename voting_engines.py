@@ -146,13 +146,6 @@ class MFPTP(EngineBase):
 
 
 
-# First-Past-The-Post election engine
-class FPTP(MFPTP):
-    """This class is for standard first-past-the-post elections where a single candidate is elected."""
-    pass
-
-
-
 # Single-Transferable-Vote election engine
 class STV(EngineBase):
     """This class is for single-transferable-vote elections where losing votes and excess winning votes are redistributed to other candidates."""
@@ -209,14 +202,4 @@ class STV(EngineBase):
             new_redist.pop(None, None)
             for candidate in new_redist:
                 self.votes[-1][candidate] += votes_to_share * new_redist[candidate]/total_weight
-
-
-
-# Alternative-Vote election engine
-class AV(STV):
-    """
-    This class is for alternative-vote elections.
-    These are a special case of single-transferable-vote elections where only one seat is available.
-    """
-    pass
 
