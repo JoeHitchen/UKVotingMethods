@@ -1,10 +1,10 @@
 from unittest import TestCase
-from voting_engines import EngineBase
+from voting_engines import DirectElectionEngine
 
 
-# EngineBase.add_votes() tests
+# DirectElectionEngine.add_votes() tests
 class Add_Votes__Tests(TestCase):
-    """This test class checks the behavour of EngineBase.add_votes() for simple voting set ups."""
+    """This test class checks the behavour of DirectElectionEngine.add_votes() for simple voting set ups."""
 
     # Prepare for tests
     def setUp(self):
@@ -12,7 +12,7 @@ class Add_Votes__Tests(TestCase):
         This method creates an election with one seat for one candidate.
         These settings can be altered in the tests
         """
-        self.engine = EngineBase(['A'])
+        self.engine = DirectElectionEngine(['A'])
 
     # Invalid candidate
     def test__invalid_candidate(self):
@@ -28,7 +28,7 @@ class Add_Votes__Tests(TestCase):
         # Test as initialisation
         self.assertRaises(
             ValueError,
-            EngineBase,
+            DirectElectionEngine,
             ['A'],
             votes = {'A': 10, 'I': 34}
         )
@@ -44,7 +44,7 @@ class Add_Votes__Tests(TestCase):
         self.assertEqual(self.engine.quota, 6)
 
         # Test as initialisation
-        engine = EngineBase(['A'], votes = {'A': 10})
+        engine = DirectElectionEngine(['A'], votes = {'A': 10})
         self.assertEqual(engine.votes, [{'A': 10}])
         self.assertEqual(engine.quota, 6)
 
@@ -59,7 +59,7 @@ class Add_Votes__Tests(TestCase):
         self.assertEqual(self.engine.quota, 6)
 
         # Test as initialisation
-        engine = EngineBase(['A'], votes = {'A': 11})
+        engine = DirectElectionEngine(['A'], votes = {'A': 11})
         self.assertEqual(engine.votes, [{'A': 11}])
         self.assertEqual(engine.quota, 6)
 
@@ -78,7 +78,7 @@ class Add_Votes__Tests(TestCase):
         self.assertEqual(self.engine.quota, 9)
 
         # Test as initialisation
-        engine = EngineBase(['A', 'B'], votes = {'A': 10, 'B': 6})
+        engine = DirectElectionEngine(['A', 'B'], votes = {'A': 10, 'B': 6})
         self.assertEqual(engine.votes, [{'A': 10, 'B': 6}])
         self.assertEqual(engine.quota, 9)
 
@@ -96,7 +96,7 @@ class Add_Votes__Tests(TestCase):
         self.assertEqual(self.engine.quota, 9)
 
         # Test as initialisation
-        engine = EngineBase(['A', 'B'], votes = {'A': 11, 'B': 6})
+        engine = DirectElectionEngine(['A', 'B'], votes = {'A': 11, 'B': 6})
         self.assertEqual(engine.votes, [{'A': 11, 'B': 6}])
         self.assertEqual(engine.quota, 9)
 
@@ -114,7 +114,7 @@ class Add_Votes__Tests(TestCase):
         self.assertEqual(self.engine.quota, 5)
 
         # Test as initialisation
-        engine = EngineBase(['A', 'B'], seats = 2, votes = {'A': 12})
+        engine = DirectElectionEngine(['A', 'B'], seats = 2, votes = {'A': 12})
         self.assertEqual(engine.votes, [{'A': 12}])
         self.assertEqual(engine.quota, 5)
 
@@ -132,15 +132,15 @@ class Add_Votes__Tests(TestCase):
         self.assertEqual(self.engine.quota, 4)
 
         # Test as initialisation
-        engine = EngineBase(['A', 'B'], seats = 3, votes = {'A': 12})
+        engine = DirectElectionEngine(['A', 'B'], seats = 3, votes = {'A': 12})
         self.assertEqual(engine.votes, [{'A': 12}])
         self.assertEqual(engine.quota, 4)
 
 
 
-# EngineBase.add_redistribution_matrix() tests
+# DirectElectionEngine.add_redistribution_matrix() tests
 class Add_Redistribution_Matrix__Tests(TestCase):
-    """This test class checks the behaviour of the EngineBase.add_redistribution_matrix() method."""
+    """This test class checks the behaviour of the DirectElectionEngine.add_redistribution_matrix() method."""
 
     # Test setup
     def setUp(self):
@@ -148,7 +148,7 @@ class Add_Redistribution_Matrix__Tests(TestCase):
         This method creates an election with three candidates running for one seat.
         These settings can be altered in the tests.
         """
-        self.engine = EngineBase(['A', 'B', 'C'], seats = 1)
+        self.engine = DirectElectionEngine(['A', 'B', 'C'])
 
 
     # Add valid redistribution matrix
@@ -162,7 +162,7 @@ class Add_Redistribution_Matrix__Tests(TestCase):
         self.assertEqual(self.engine.redistribution_matrix, {'A': {'B': 1, 'C': 3}})
 
         # Test as initialisation
-        engine = EngineBase(['A', 'B', 'C'], redistribution_matrix = {'A': {'B': 1, 'C': 3}})
+        engine = DirectElectionEngine(['A', 'B', 'C'], redistribution_matrix = {'A': {'B': 1, 'C': 3}})
         self.assertEqual(engine.redistribution_matrix, {'A': {'B': 1, 'C': 3}})
 
 
@@ -178,7 +178,7 @@ class Add_Redistribution_Matrix__Tests(TestCase):
 
         # Test as initialisation
         with self.assertRaisesRegex(Exception, 'From-candidate not recognised: "None"'):
-            EngineBase(
+            DirectElectionEngine(
                 ['A', 'B', 'C'],
                 redistribution_matrix = {None: {'B': 1, 'C': 3}}
             )
@@ -196,7 +196,7 @@ class Add_Redistribution_Matrix__Tests(TestCase):
 
         # Test as initialisation
         with self.assertRaisesRegex(Exception, 'From-candidate not recognised: "D"'):
-            EngineBase(
+            DirectElectionEngine(
                 ['A', 'B', 'C'],
                 redistribution_matrix = {'D': {'B': 1, 'C': 3}}
             )
@@ -212,7 +212,7 @@ class Add_Redistribution_Matrix__Tests(TestCase):
         })
 
         # Test as initialisation
-        EngineBase(
+        DirectElectionEngine(
             ['A', 'B', 'C'],
             redistribution_matrix = {'A': {'B': 1, 'C': 3, None: 2}}
         )
@@ -230,16 +230,16 @@ class Add_Redistribution_Matrix__Tests(TestCase):
 
         # Test as initialisation
         with self.assertRaisesRegex(Exception, 'To-candidate not recognised: "D"'):
-            EngineBase(
+            DirectElectionEngine(
                 ['A', 'B', 'C'],
                 redistribution_matrix = {'A': {'B': 1, 'C': 3, 'D': 2}}
             )
 
 
 
-# EngineBase.single_voting_round() tests
+# DirectElectionEngine.single_voting_round() tests
 class Single_Voting_Round__Tests(TestCase):
-    """This test class checks the behavour of EngineBase.single_voting_round()."""
+    """This test class checks the behavour of DirectElectionEngine.single_voting_round()."""
 
     # Prepare for tests
     def setUp(self):
@@ -247,7 +247,7 @@ class Single_Voting_Round__Tests(TestCase):
         This method creates an election for one seat, two candidates and a quota of 5.
         These settings can be altered in tests.
         """
-        self.engine = EngineBase(['A', 'B'])
+        self.engine = DirectElectionEngine(['A', 'B'])
         self.engine.quota = 5
 
 
@@ -421,9 +421,9 @@ class Single_Voting_Round__Tests(TestCase):
 
 
 
-# EngineBase.find_winner() tests
+# DirectElectionEngine.find_winner() tests
 class Find_Winner__Tests(TestCase):
-    """This test class checks the behavour of EngineBase.find_winner() for votes from a single round."""
+    """This test class checks the behavour of DirectElectionEngine.find_winner() for votes from a single round."""
 
     # Prepare for tests
     def setUp(self):
@@ -431,7 +431,7 @@ class Find_Winner__Tests(TestCase):
         This method creates an election for one seat, two candidates and a quota of 5.
         These settings can be altered in tests.
         """
-        self.engine = EngineBase(['A', 'B'])
+        self.engine = DirectElectionEngine(['A', 'B'])
         self.engine.quota = 5
 
 
@@ -471,9 +471,9 @@ class Find_Winner__Tests(TestCase):
 
 
 
-# EngineBase.find_loser() tests
+# DirectElectionEngine.find_loser() tests
 class Find_Loser__Tests(TestCase):
-    """This test class checks the behavour of EngineBase.find_winner() for votes from a single round."""
+    """This test class checks the behavour of DirectElectionEngine.find_winner() for votes from a single round."""
 
     # Prepare for tests
     def setUp(self):
@@ -481,7 +481,7 @@ class Find_Loser__Tests(TestCase):
         This method creates an election for one seat, one candidate and a quota of 5 - A single candidate is needed here to limit elections to one round.
         These settings can be altered in tests.
         """
-        self.engine = EngineBase(['A', 'B'])
+        self.engine = DirectElectionEngine(['A', 'B'])
         self.engine.quota = 5
 
 
@@ -507,9 +507,9 @@ class Find_Loser__Tests(TestCase):
 
 
 
-# EngineBase.redistribute_votes() tests
+# DirectElectionEngine.redistribute_votes() tests
 class Redistribute_Votes__Tests(TestCase):
-    """This test class checks the behaviour of the EngineBase.redistribute_votes() method."""
+    """This test class checks the behaviour of the DirectElectionEngine.redistribute_votes() method."""
 
     # Test setup
     def setUp(self):
@@ -517,9 +517,8 @@ class Redistribute_Votes__Tests(TestCase):
         This method creates an election with three candidates running for one seat and the first round of voting complete.
         These settings can be altered in the tests.
         """
-        self.engine = EngineBase(
+        self.engine = DirectElectionEngine(
             ['A', 'B', 'C'],
-            seats = 1,
             votes = {'A': 30, 'B': 10, 'C': 20}
         )
 

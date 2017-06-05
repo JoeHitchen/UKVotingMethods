@@ -4,11 +4,15 @@ from math import floor
 
 
 # Election engine base
-class EngineBase():
+class DirectElectionEngine():
     """
-    This is the base class for voting engines.
-    Vote redistribution when electing or eliminating a candidate can be controled by overwriting the "redistribute_winner" and "redistribute_loser" methods.
-    It does not currently support proportional or mixed style voting.
+    This class handles direct elections where representatives are elected directly by the electorate.
+    The following voting methods are supported:
+        1. First-past-the-post
+        2. Multi-member first-past-the-post
+        3. Alternative vote
+        4. Single transferable vote
+    Since this is a post-election analysis tool, a redistribution matrix is used to handle lower-preference votes and it is not possible to specify these ballots directly.
     """
 
     # Initialisation routine
