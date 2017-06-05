@@ -115,13 +115,13 @@ class EngineBase():
                 self.elected.append(winner)
                 if self.seats == len(self.elected):
                     break
-                self.redistribute_winner(winner)
+                self.redistribute_votes(winner, self.votes[-1][winner] - self.quota)
                 continue
 
             # Eliminate loser
             loser = self.find_loser(round_votes)
             self.eliminated.append(loser)
-            self.redistribute_loser(loser)
+            self.redistribute_votes(loser, self.votes[-1][loser])
 
 
     # Find winner method
@@ -147,18 +147,6 @@ class EngineBase():
             reverse = False
         )
         return ranked_votes[0][0]
-
-
-    # Redistribute winner method
-    def redistribute_winner(self, winner):
-        """This is a stub method intended to be overwritten by subclasses."""
-        pass
-
-
-    # Redistribute loser method
-    def redistribute_loser(self, loser):
-        """This is a stub method intended to be overwritten by subclasses."""
-        pass
 
 
     # Advance voting method
@@ -194,29 +182,12 @@ class EngineBase():
 # Multiple-First-Past-The-Post election engine
 class MFPTP(EngineBase):
     """This class is for elections where multiple candidates are elected under the first-past-the-post system."""
-
-    # Redistribute winner method
-    def redistribute_winner(self, winner):
-        """The winning candidate is removed from the election. Their Excess votes are not redistributed."""
-        self.advance_voting_round(winner)
-
-    # Redistribute loser method
-    def redistribute_loser(self, loser):
-        """The losing candidate is removed from the election. Their votes are not redistributed."""
-        self.advance_voting_round(loser)
+    pass
 
 
 
 # Single-Transferable-Vote election engine
 class STV(EngineBase):
     """This class is for single-transferable-vote elections where losing votes and excess winning votes are redistributed to other candidates."""
-
-    # Redistribute winner method
-    def redistribute_winner(self, winner):
-        self.redistribute_votes(winner, self.votes[-1][winner] - self.quota)
-
-
-    # Redistribute loser method
-    def redistribute_loser(self, loser):
-        self.redistribute_votes(loser, self.votes[-1][loser])
+    pass
 
