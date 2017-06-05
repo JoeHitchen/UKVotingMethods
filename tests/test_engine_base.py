@@ -437,43 +437,6 @@ class Find_Loser__Tests(TestCase):
 
 
 
-# EngineBase.advance_voting_round() tests
-class Advance_Voting_Round__Tests(TestCase):
-    """This test class checks the behavour of EngineBase.advance_voting_round() when advancing a single round."""
-
-    # Prepare for tests
-    def setUp(self):
-        """
-        This method creates an election for one seat, one candidate and a quota of 5 - A single candidate is needed here to limit elections to one round.
-        These settings can be altered in tests.
-        """
-        self.engine = EngineBase(['A', 'B', 'C'])
-        self.engine.quota = 5
-        self.engine.votes = [{'A': 10, 'C': 13, 'B': 4}]
-
-
-    # Eliminate first candidate
-    def test__eliminate_first_candidate(self):
-        """Candidate A should not appear in the last round of voting."""
-        self.engine.advance_voting_round('A')
-        self.assertEqual(self.engine.votes[-1], {'B': 4, 'C': 13})
-
-
-    # Eliminate middle candidate
-    def test__eliminate_middle_candidate(self):
-        """Candidate B should not appear in the last round of voting."""
-        self.engine.advance_voting_round('B')
-        self.assertEqual(self.engine.votes[-1], {'A': 10, 'C': 13})
-
-
-    # Eliminate last candidate
-    def test__eliminate_last_candidate(self):
-        """Candidate C should not appear in the last round of voting."""
-        self.engine.advance_voting_round('C')
-        self.assertEqual(self.engine.votes[-1], {'A': 10, 'B': 4})
-
-
-
 # EngineBase.redistribute_votes() tests
 class Redistribute_Votes__Tests(TestCase):
     """This test class checks the behaviour of the EngineBase.redistribute_votes() method."""

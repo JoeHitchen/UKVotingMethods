@@ -152,13 +152,6 @@ class EngineBase():
         return ranked_votes[0][0]
 
 
-    # Advance voting round method
-    def advance_voting_round(self, candidate):
-        """This method advances the voting round and eliminates the candidate specified."""
-        self.votes.append(copy(self.votes[-1]))
-        self.votes[-1].pop(candidate)
-
-
     # Redistribute votes method
     def redistribute_votes(self, candidate_to_go, votes_to_share = False):
         """
@@ -168,7 +161,8 @@ class EngineBase():
         """
 
         # Advance voting round
-        self.advance_voting_round(candidate_to_go)
+        self.votes.append(copy(self.votes[-1]))
+        self.votes[-1].pop(candidate_to_go)
 
         # Redistribute votes
         if candidate_to_go in self.redistribution_matrix:
