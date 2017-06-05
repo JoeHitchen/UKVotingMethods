@@ -100,6 +100,74 @@ class Add_Votes__Tests(TestCase):
 
 
 
+# EngineBase.add_redistribution_matrix() tests
+class Add_Redistribution_Matrix__Tests(TestCase):
+    """This test class checks the behaviour of the EngineBase.add_redistribution_matrix() method."""
+
+    # Test setup
+    def setUp(self):
+        """
+        This method creates an election with three candidates running for one seat.
+        These settings can be altered in the tests.
+        """
+        self.engine = EngineBase(['A', 'B', 'C'], seats = 1)
+
+
+    # Add valid redistribution matrix
+    def test__valid_matrix(self):
+        """This redistribution matrix should be accepted."""
+
+        # Test method
+        self.engine.add_redistribution_matrix({
+            'A': {'B': 1, 'C': 3}
+        })
+        self.assertEqual(self.engine.redistribution_matrix, {'A': {'B': 1, 'C': 3}})
+
+
+    # Using 'None' as a 'from' key
+    def test__from_none(self):
+        """This redistribution matrix should be rejected."""
+
+        # Test method
+        with self.assertRaisesRegex(Exception, 'From-candidate not recognised: "None"'):
+            self.engine.add_redistribution_matrix({
+                None: {'B': 1, 'C': 3}
+            })
+
+
+    # Unknown candidate as a 'from' key
+    def test__from_unknown(self):
+        """This redistribution matrix should be rejected."""
+
+        # Test method
+        with self.assertRaisesRegex(Exception, 'From-candidate not recognised: "D"'):
+            self.engine.add_redistribution_matrix({
+                'D': {'B': 1, 'C': 3}
+            })
+
+
+    # Using 'None' as a 'to' key
+    def test__to_none(self):
+        """This redistribution matrix should be accepted."""
+
+        # Test method
+        self.engine.add_redistribution_matrix({
+            'A': {'B': 1, 'C': 3, None: 2}
+        })
+
+
+    # Unknown candidate as a 'to' key
+    def test__to_unknown(self):
+        """This redistribution matrix should be rejected."""
+
+        # Test method
+        with self.assertRaisesRegex(Exception, 'To-candidate not recognised: "D"'):
+            self.engine.add_redistribution_matrix({
+                'A': {'B': 1, 'C': 3, 'D': 2}
+            })
+
+
+
 # EngineBase.run_election() tests
 class Run_Election__Tests(TestCase):
     """This test class checks the behavour of EngineBase.run_election() under conditions which force a single election round."""
