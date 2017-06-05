@@ -157,3 +157,80 @@ class FPTP(MFPTP):
 
 
 
+# Single-Transferable-Vote election engine
+class STV(EngineBase):
+    """This class is for single-transferable-vote elections where losing votes and excess winning votes are redistributed to other candidates."""
+
+    # Initialisation method
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.redistribution_matrix = {}
+
+
+    # Redistribution matrix initialisation
+    def add_redistribution_matrix(self, matrix):
+        """
+        This method checks that only valid candiates are listed as 'from' and 'to' redistribution keys.
+        A 'None' key is also accepted as a 'to' key for votes which are not to be re-allocated.
+        It is not necessary to list all candidates in either key list.
+        """
+
+        # Check 'from' keys are valid
+        for from_key in matrix:
+            if not from_key in self.candidates:
+                raise ValueError('From-candidate not recognised: "{}"'.format(from_key))
+
+            # Check 'to' keys are valid
+            for to_key in matrix[from_key]:
+                if not to_key in self.candidates and to_key is not None:
+                    raise ValueError('To-candidate not recognised: "{}"'.format(to_key))
+
+        # Add matrix to engine
+        self.redistribution_matrix = matrix
+
+
+    # Redistribute winner method
+    def redistribute_winner(self, winner):
+        self.redistribute_votes(winner, self.votes[-1][winner] - self.quota)
+
+
+    # Redistribute loser method
+    def redistribute_loser(self, loser):
+        self.redistribute_votes(loser, self.votes[-1][loser])
+
+
+    # Redistribute votes method
+    def redistribute_votes(self, candidate_to_go, votes_to_share):
+
+        # Advance voting round
+        self.advance_voting_round(candidate_to_go)
+
+        # Redistribute votes
+        if candidate_to_go in self.redistribution_matrix:
+
+            # Get updated redistribution array
+            new_redist = {None: self.redistribution_matrix[candidate_to_go][None]} if None in self.redistribution_matrix[candidate_to_go] else {}
+            for candidate in self.votes[-1]:
+                if candidate in self.redistribution_matrix[candidate_to_go]:
+                    new_redist[candidate] = self.redistribution_matrix[candidate_to_go][candidate]
+
+            # Redistribute votes:
+            total_weight = sum(new_redist.values())
+            new_redist.pop(None, None)
+            for candidate in new_redist:
+                self.votes[-1][candidate] += votes_to_share * new_redist[candidate]/total_weight
+
+
+
+# Alternative-Vote election engine
+class AV(STV):
+    """
+    This class is for alternative-vote elections.
+    These are a special case of single-transferable-vote elections where only one seat is available.
+    """
+
+    # Initialisation method
+    def __init__(self, candidates):
+        """This method is a wrapper for the parent method with the number of seats set."""
+        super().__init__(1, candidates)
+
