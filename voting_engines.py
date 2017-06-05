@@ -115,13 +115,16 @@ class EngineBase():
                 self.elected.append(winner)
                 if self.seats == len(self.elected):
                     break
-                self.redistribute_votes(winner, self.votes[-1][winner] - self.quota)
+                self.redistribute_votes(
+                    winner,
+                    votes_to_share = self.votes[-1][winner] - self.quota
+                )
                 continue
 
             # Eliminate loser
             loser = self.find_loser(round_votes)
             self.eliminated.append(loser)
-            self.redistribute_votes(loser, self.votes[-1][loser])
+            self.redistribute_votes(loser)
 
 
     # Find winner method
@@ -157,7 +160,7 @@ class EngineBase():
 
 
     # Redistribute votes method
-    def redistribute_votes(self, candidate_to_go, votes_to_share):
+    def redistribute_votes(self, candidate_to_go, votes_to_share = False):
 
         # Advance voting round
         self.advance_voting_round(candidate_to_go)
@@ -175,5 +178,5 @@ class EngineBase():
             total_weight = sum(new_redist.values())
             new_redist.pop(None, None)
             for candidate in new_redist:
-                self.votes[-1][candidate] += votes_to_share * new_redist[candidate]/total_weight
+                self.votes[-1][candidate] += (votes_to_share if votes_to_share else self.votes[-2][candidate_to_go]) * new_redist[candidate]/total_weight
 

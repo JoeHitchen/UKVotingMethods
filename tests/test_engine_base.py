@@ -500,7 +500,7 @@ class Redistribute_Votes__Tests(TestCase):
         self.engine.add_redistribution_matrix({})
 
         # Call method and test
-        self.engine.redistribute_votes('B', self.engine.votes[-1]['B'])
+        self.engine.redistribute_votes('B')
         self.assertEqual(
             self.engine.votes,
             [
@@ -518,7 +518,7 @@ class Redistribute_Votes__Tests(TestCase):
         self.engine.add_redistribution_matrix({'B': {}})
 
         # Call method and test
-        self.engine.redistribute_votes('B', self.engine.votes[-1]['B'])
+        self.engine.redistribute_votes('B')
         self.assertEqual(
             self.engine.votes,
             [
@@ -536,7 +536,7 @@ class Redistribute_Votes__Tests(TestCase):
         self.engine.add_redistribution_matrix({'B': {None: 1}})
 
         # Call method and test
-        self.engine.redistribute_votes('B', self.engine.votes[-1]['B'])
+        self.engine.redistribute_votes('B')
         self.assertEqual(
             self.engine.votes,
             [
@@ -554,7 +554,7 @@ class Redistribute_Votes__Tests(TestCase):
         self.engine.add_redistribution_matrix({'B': {'A': 1}})
 
         # Call method and test
-        self.engine.redistribute_votes('B', self.engine.votes[-1]['B'])
+        self.engine.redistribute_votes('B')
         self.assertEqual(
             self.engine.votes,
             [
@@ -573,7 +573,7 @@ class Redistribute_Votes__Tests(TestCase):
         self.engine.votes[-1].pop('A')
 
         # Call method and test
-        self.engine.redistribute_votes('B', self.engine.votes[-1]['B'])
+        self.engine.redistribute_votes('B')
         self.assertEqual(
             self.engine.votes,
             [
@@ -591,7 +591,7 @@ class Redistribute_Votes__Tests(TestCase):
         self.engine.add_redistribution_matrix({'B': {'A': 2, None: 3}})
 
         # Call method and test
-        self.engine.redistribute_votes('B', self.engine.votes[-1]['B'])
+        self.engine.redistribute_votes('B')
         self.assertEqual(
             self.engine.votes,
             [
@@ -609,7 +609,7 @@ class Redistribute_Votes__Tests(TestCase):
         self.engine.add_redistribution_matrix({'B': {'A': 2, 'C': 3}})
 
         # Call method and test
-        self.engine.redistribute_votes('B', self.engine.votes[-1]['B'])
+        self.engine.redistribute_votes('B')
         self.assertEqual(
             self.engine.votes,
             [
@@ -628,12 +628,30 @@ class Redistribute_Votes__Tests(TestCase):
         self.engine.votes[-1].pop('A')
 
         # Call method and test
-        self.engine.redistribute_votes('B', self.engine.votes[-1]['B'])
+        self.engine.redistribute_votes('B')
         self.assertEqual(
             self.engine.votes,
             [
                 {'B': 10, 'C': 20},
                 {'C': 30}
+            ]
+        )
+
+
+    # Split specified nnumber of votes
+    def test__votes_to_share(self):
+        """Candidate B's votes should be fully transferred to C."""
+
+        # Add redistribution
+        self.engine.add_redistribution_matrix({'B': {'A': 2, 'C': 3}})
+
+        # Call method and test
+        self.engine.redistribute_votes('B', votes_to_share = 10)
+        self.assertEqual(
+            self.engine.votes,
+            [
+                {'A': 30, 'B': 10, 'C': 20},
+                {'A': 34, 'C': 26}
             ]
         )
 
