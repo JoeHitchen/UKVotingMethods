@@ -25,6 +25,14 @@ class Add_Votes__Tests(TestCase):
             {'A': 10, 'I': 34}
         )
 
+        # Test as initialisation
+        self.assertRaises(
+            ValueError,
+            EngineBase,
+            ['A'],
+            votes = {'A': 10, 'I': 34}
+        )
+
 
     # Single candidate for one seat with an even number of votes
     def test__single_seat__single_candidate__even_votes(self):
@@ -35,6 +43,11 @@ class Add_Votes__Tests(TestCase):
         self.assertEqual(self.engine.votes, [{'A': 10}])
         self.assertEqual(self.engine.quota, 6)
 
+        # Test as initialisation
+        engine = EngineBase(['A'], votes = {'A': 10})
+        self.assertEqual(engine.votes, [{'A': 10}])
+        self.assertEqual(engine.quota, 6)
+
 
     # Single candidate for one seat with an odd number of votes
     def test__single_seat__single_candidate__odd_votes(self):
@@ -44,6 +57,12 @@ class Add_Votes__Tests(TestCase):
         self.engine.add_votes({'A': 11})
         self.assertEqual(self.engine.votes, [{'A': 11}])
         self.assertEqual(self.engine.quota, 6)
+
+        # Test as initialisation
+        engine = EngineBase(['A'], votes = {'A': 11})
+        self.assertEqual(engine.votes, [{'A': 11}])
+        self.assertEqual(engine.quota, 6)
+
 
 
     # Two candidates for one seat with an even number of votes
@@ -58,6 +77,11 @@ class Add_Votes__Tests(TestCase):
         self.assertEqual(self.engine.votes, [{'A': 10, 'B': 6}])
         self.assertEqual(self.engine.quota, 9)
 
+        # Test as initialisation
+        engine = EngineBase(['A', 'B'], votes = {'A': 10, 'B': 6})
+        self.assertEqual(engine.votes, [{'A': 10, 'B': 6}])
+        self.assertEqual(engine.quota, 9)
+
 
     # Two candidates for one seat with an odd number of votes
     def test__single_seat__two_candidates__odd_votes(self):
@@ -70,6 +94,11 @@ class Add_Votes__Tests(TestCase):
         self.engine.add_votes({'A': 11, 'B': 6})
         self.assertEqual(self.engine.votes, [{'A': 11, 'B': 6}])
         self.assertEqual(self.engine.quota, 9)
+
+        # Test as initialisation
+        engine = EngineBase(['A', 'B'], votes = {'A': 11, 'B': 6})
+        self.assertEqual(engine.votes, [{'A': 11, 'B': 6}])
+        self.assertEqual(engine.quota, 9)
 
 
     # Single candidate for two seats with twelve votes
@@ -84,6 +113,11 @@ class Add_Votes__Tests(TestCase):
         self.assertEqual(self.engine.votes, [{'A': 12}])
         self.assertEqual(self.engine.quota, 5)
 
+        # Test as initialisation
+        engine = EngineBase(['A', 'B'], seats = 2, votes = {'A': 12})
+        self.assertEqual(engine.votes, [{'A': 12}])
+        self.assertEqual(engine.quota, 5)
+
 
     # Single candidate for three seats with twelve votes
     def test__three_seats__single_candidate__twelve_votes(self):
@@ -96,6 +130,11 @@ class Add_Votes__Tests(TestCase):
         self.engine.add_votes({'A': 12})
         self.assertEqual(self.engine.votes, [{'A': 12}])
         self.assertEqual(self.engine.quota, 4)
+
+        # Test as initialisation
+        engine = EngineBase(['A', 'B'], seats = 3, votes = {'A': 12})
+        self.assertEqual(engine.votes, [{'A': 12}])
+        self.assertEqual(engine.quota, 4)
 
 
 
