@@ -2,7 +2,6 @@ from unittest import TestCase
 from voting_engines import EngineBase
 
 
-
 # EngineBase.add_votes() tests
 class Add_Votes__Tests(TestCase):
     """This test class checks the behavour of EngineBase.add_votes() for simple voting set ups."""
