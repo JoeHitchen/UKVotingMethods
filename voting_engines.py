@@ -28,6 +28,7 @@ class EngineBase():
         self.seats = seats
         self.candidates = candidates
         self.votes = []
+        self.redistribution_matrix = {}
 
         # Prepare output containers
         self.elected = []
@@ -155,12 +156,6 @@ class FPTP(MFPTP):
 # Single-Transferable-Vote election engine
 class STV(EngineBase):
     """This class is for single-transferable-vote elections where losing votes and excess winning votes are redistributed to other candidates."""
-
-    # Initialisation method
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.redistribution_matrix = {}
-
 
     # Redistribution matrix initialisation
     def add_redistribution_matrix(self, matrix):
