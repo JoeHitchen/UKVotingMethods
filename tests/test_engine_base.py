@@ -405,3 +405,167 @@ class Advance_Voting_Round__Tests(TestCase):
         self.engine.advance_voting_round('C')
         self.assertEqual(self.engine.votes[-1], {'A': 10, 'B': 4})
 
+
+
+# EngineBase.redistribute_votes() tests
+class Redistribute_Votes__Tests(TestCase):
+    """This test class checks the behaviour of the EngineBase.redistribute_votes() method."""
+
+    # Test setup
+    def setUp(self):
+        """
+        This method creates an election with three candidates running for one seat and the first round of voting complete.
+        These settings can be altered in the tests.
+        """
+        self.engine = EngineBase(
+            ['A', 'B', 'C'],
+            seats = 1,
+            votes = {'A': 30, 'B': 10, 'C': 20}
+        )
+
+
+    # No 'from' key
+    def test__no_from_key(self):
+        """Candidate B's votes should be dropped."""
+
+        # Add redistribution
+        self.engine.add_redistribution_matrix({})
+
+        # Call method and test
+        self.engine.redistribute_votes('B', self.engine.votes[-1]['B'])
+        self.assertEqual(
+            self.engine.votes,
+            [
+                {'A': 30, 'B': 10, 'C': 20},
+                {'A': 30, 'C': 20}
+            ]
+        )
+
+
+    # No 'to' key
+    def test__no_to_key(self):
+        """Candidate B's votes should be dropped."""
+
+        # Add redistribution
+        self.engine.add_redistribution_matrix({'B': {}})
+
+        # Call method and test
+        self.engine.redistribute_votes('B', self.engine.votes[-1]['B'])
+        self.assertEqual(
+            self.engine.votes,
+            [
+                {'A': 30, 'B': 10, 'C': 20},
+                {'A': 30, 'C': 20}
+            ]
+        )
+
+
+    # All votes to none
+    def test__all_votes_to_none(self):
+        """Candidate B's votes should be dropped."""
+
+        # Add redistribution
+        self.engine.add_redistribution_matrix({'B': {None: 1}})
+
+        # Call method and test
+        self.engine.redistribute_votes('B', self.engine.votes[-1]['B'])
+        self.assertEqual(
+            self.engine.votes,
+            [
+                {'A': 30, 'B': 10, 'C': 20},
+                {'A': 30, 'C': 20}
+            ]
+        )
+
+
+    # All votes to one candidate
+    def test__all_to_one(self):
+        """Candidate B's votes should be transferred to A."""
+
+        # Add redistribution
+        self.engine.add_redistribution_matrix({'B': {'A': 1}})
+
+        # Call method and test
+        self.engine.redistribute_votes('B', self.engine.votes[-1]['B'])
+        self.assertEqual(
+            self.engine.votes,
+            [
+                {'A': 30, 'B': 10, 'C': 20},
+                {'A': 40, 'C': 20}
+            ]
+        )
+
+
+    # All votes to eliminated candidate
+    def test__all_to_eliminated(self):
+        """Candidate B's votes should be dropped."""
+
+        # Add redistribution and eliminate candidate A
+        self.engine.add_redistribution_matrix({'B': {'A': 1}})
+        self.engine.votes[-1].pop('A')
+
+        # Call method and test
+        self.engine.redistribute_votes('B', self.engine.votes[-1]['B'])
+        self.assertEqual(
+            self.engine.votes,
+            [
+                {'B': 10, 'C': 20},
+                {'C': 20}
+            ]
+        )
+
+
+    # Split with none
+    def test__split_with_none(self):
+        """Candidate B's votes should be partially transferred to A."""
+
+        # Add redistribution
+        self.engine.add_redistribution_matrix({'B': {'A': 2, None: 3}})
+
+        # Call method and test
+        self.engine.redistribute_votes('B', self.engine.votes[-1]['B'])
+        self.assertEqual(
+            self.engine.votes,
+            [
+                {'A': 30, 'B': 10, 'C': 20},
+                {'A': 34, 'C': 20}
+            ]
+        )
+
+
+    # Split two candidates
+    def test__split_two_candidates(self):
+        """Candidate B's votes should be partially transferred to A and partially to C."""
+
+        # Add redistribution
+        self.engine.add_redistribution_matrix({'B': {'A': 2, 'C': 3}})
+
+        # Call method and test
+        self.engine.redistribute_votes('B', self.engine.votes[-1]['B'])
+        self.assertEqual(
+            self.engine.votes,
+            [
+                {'A': 30, 'B': 10, 'C': 20},
+                {'A': 34, 'C': 26}
+            ]
+        )
+
+
+    # Split with eliminated candidate
+    def test__split_with_eliminated(self):
+        """Candidate B's votes should be fully transferred to C."""
+
+        # Add redistribution
+        self.engine.add_redistribution_matrix({'B': {'A': 2, 'C': 3}})
+        self.engine.votes[-1].pop('A')
+
+        # Call method and test
+        self.engine.redistribute_votes('B', self.engine.votes[-1]['B'])
+        self.assertEqual(
+            self.engine.votes,
+            [
+                {'B': 10, 'C': 20},
+                {'C': 30}
+            ]
+        )
+

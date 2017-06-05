@@ -168,6 +168,28 @@ class EngineBase():
         self.votes[-1].pop(candidate)
 
 
+    # Redistribute votes method
+    def redistribute_votes(self, candidate_to_go, votes_to_share):
+
+        # Advance voting round
+        self.advance_voting_round(candidate_to_go)
+
+        # Redistribute votes
+        if candidate_to_go in self.redistribution_matrix:
+
+            # Get updated redistribution array
+            new_redist = {None: self.redistribution_matrix[candidate_to_go][None]} if None in self.redistribution_matrix[candidate_to_go] else {}
+            for candidate in self.votes[-1]:
+                if candidate in self.redistribution_matrix[candidate_to_go]:
+                    new_redist[candidate] = self.redistribution_matrix[candidate_to_go][candidate]
+
+            # Redistribute votes:
+            total_weight = sum(new_redist.values())
+            new_redist.pop(None, None)
+            for candidate in new_redist:
+                self.votes[-1][candidate] += votes_to_share * new_redist[candidate]/total_weight
+
+
 
 # Multiple-First-Past-The-Post election engine
 class MFPTP(EngineBase):
@@ -197,26 +219,4 @@ class STV(EngineBase):
     # Redistribute loser method
     def redistribute_loser(self, loser):
         self.redistribute_votes(loser, self.votes[-1][loser])
-
-
-    # Redistribute votes method
-    def redistribute_votes(self, candidate_to_go, votes_to_share):
-
-        # Advance voting round
-        self.advance_voting_round(candidate_to_go)
-
-        # Redistribute votes
-        if candidate_to_go in self.redistribution_matrix:
-
-            # Get updated redistribution array
-            new_redist = {None: self.redistribution_matrix[candidate_to_go][None]} if None in self.redistribution_matrix[candidate_to_go] else {}
-            for candidate in self.votes[-1]:
-                if candidate in self.redistribution_matrix[candidate_to_go]:
-                    new_redist[candidate] = self.redistribution_matrix[candidate_to_go][candidate]
-
-            # Redistribute votes:
-            total_weight = sum(new_redist.values())
-            new_redist.pop(None, None)
-            for candidate in new_redist:
-                self.votes[-1][candidate] += votes_to_share * new_redist[candidate]/total_weight
 
