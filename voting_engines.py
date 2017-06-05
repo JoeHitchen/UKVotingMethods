@@ -3,6 +3,7 @@ from copy import copy
 from math import floor
 
 
+# Election engine base
 class EngineBase():
     """
     This is the base class for voting engines.
@@ -129,16 +130,29 @@ class EngineBase():
 
 
 
+# Multiple-First-Past-The-Post election engine
 class MFPTP(EngineBase):
+    """This class is for elections where multiple candidates are elected under the first-past-the-post system."""
 
+    # Redistribute winner method
     def redistribute_winner(self, winner):
+        """The winning candidate is removed from the election. Their Excess votes are not redistributed."""
         self.advance_voting_round(winner)
+
+    # Redistribute loser method
     def redistribute_loser(self, loser):
+        """The losing candidate is removed from the election. Their votes are not redistributed."""
         self.advance_voting_round(loser)
 
 
+
+# First-Past-The-Post election engine
 class FPTP(MFPTP):
+    """This class is for standard first-past-the-post elections where a single candidate is elected."""
+
+    # Initialisation method
     def __init__(self, candidates):
+        """This method is a wrapper for the parent method with the number of seats set."""
         super().__init__(1, candidates)
 
 
