@@ -12,23 +12,40 @@ class EngineBase():
     """
 
     # Initialisation routine
-    def __init__(self, candidates, seats = 1):
+    def __init__(self, candidates, seats = 1, votes = [], redistribution_matrix = {}):
         """
         This method creates an election engine from inputs representing the number of seats and the list of candidates.
 
-        Parameters
+        Required Parameters
         ------
         candidates: list <candidate obj>
             The list of candidates standing.
+
+        Optional Parameters
+        ------
         seats: int (default = 1)
             The number of seats to be elected.
+        votes: dict <candidate: int>
+            The first-round votes for each candidate.
+        redistribution_matrix: dict <candidate: dict <candidate: int> >
+            The redistribution matrix for all candidates.
         """
+        ### THIS METHOD IS UNTESTED ###
 
-        # Read arguments
-        self.seats = seats
+        # Read candidates and number of seats
         self.candidates = candidates
+        self.seats = seats
+
+        # Process votes input
         self.votes = []
+        if votes:
+            self.add_votes(votes)
+
+        # Process redistribution matrix input
         self.redistribution_matrix = {}
+        if redistribution_matrix:
+            self.add_redistribution_matrix(redistribution_matrix)
+
 
         # Prepare output containers
         self.elected = []
