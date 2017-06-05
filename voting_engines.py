@@ -48,6 +48,28 @@ class EngineBase():
         self.quota = floor(sum(votes.values())/(self.seats+1))+1
 
 
+    # Redistribution matrix initialisation
+    def add_redistribution_matrix(self, matrix):
+        """
+        This method checks that only valid candiates are listed as 'from' and 'to' redistribution keys.
+        A 'None' key is also accepted as a 'to' key for votes which are not to be re-allocated.
+        It is not necessary to list all candidates in either key list.
+        """
+
+        # Check 'from' keys are valid
+        for from_key in matrix:
+            if not from_key in self.candidates:
+                raise ValueError('From-candidate not recognised: "{}"'.format(from_key))
+
+            # Check 'to' keys are valid
+            for to_key in matrix[from_key]:
+                if not to_key in self.candidates and to_key is not None:
+                    raise ValueError('To-candidate not recognised: "{}"'.format(to_key))
+
+        # Add matrix to engine
+        self.redistribution_matrix = matrix
+
+
     # Main routine
     def run_election(self):
         """
@@ -149,28 +171,6 @@ class MFPTP(EngineBase):
 # Single-Transferable-Vote election engine
 class STV(EngineBase):
     """This class is for single-transferable-vote elections where losing votes and excess winning votes are redistributed to other candidates."""
-
-    # Redistribution matrix initialisation
-    def add_redistribution_matrix(self, matrix):
-        """
-        This method checks that only valid candiates are listed as 'from' and 'to' redistribution keys.
-        A 'None' key is also accepted as a 'to' key for votes which are not to be re-allocated.
-        It is not necessary to list all candidates in either key list.
-        """
-
-        # Check 'from' keys are valid
-        for from_key in matrix:
-            if not from_key in self.candidates:
-                raise ValueError('From-candidate not recognised: "{}"'.format(from_key))
-
-            # Check 'to' keys are valid
-            for to_key in matrix[from_key]:
-                if not to_key in self.candidates and to_key is not None:
-                    raise ValueError('To-candidate not recognised: "{}"'.format(to_key))
-
-        # Add matrix to engine
-        self.redistribution_matrix = matrix
-
 
     # Redistribute winner method
     def redistribute_winner(self, winner):
