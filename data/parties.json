@@ -1,0 +1,29 @@
+{
+  "Lab": {
+    "redistribute": {"Lab": 1},
+    "aliases": ["Labour"]
+  },
+  "Con": {
+    "redistribute": {"Con": 1},
+    "aliases": ["Conservative"]
+  },
+  "LD": {
+    "redistribute": {"LD": 1},
+    "aliases": ["Liberal Democrat"]
+  },
+  "UKIP": {
+    "redistribute": {"UKIP": 1},
+    "aliases": ["UKIP"]
+  },
+  "Grn": {
+    "redistribute": {"Grn": 1},
+    "aliases": ["Green"]
+  },
+  "Soc": {
+    "redistribute": {"Soc": 1},
+    "aliases": ["Socialist (GB)"]
+  },
+  "Ind": {
+    "aliases": ["Independent"]
+  }
+}
