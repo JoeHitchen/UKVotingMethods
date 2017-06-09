@@ -6,12 +6,8 @@ import sys
 from wiki_scraper import get_constituency_results
 
 
-# Read year from commandline (default 2015)
-year = sys.argv[1] if len(sys.argv) > 1 else 2015
-
-
 # Get constituency list page
-request = get_request('https://en.wikipedia.org/wiki/Results_of_the_United_Kingdom_general_election,_{}_by_parliamentary_constituency'.format(year))
+request = get_request('https://en.wikipedia.org/wiki/Results_of_the_United_Kingdom_general_election,_2015_by_parliamentary_constituency')
 request.raise_for_status()
 soup = Soup(request.text, 'html.parser')
 
@@ -36,10 +32,10 @@ for row in table.findChildren('tr'):
     # Get results
     print('({:03}/650) {}'.format(len(constituencies)+1, name))
     page_url = 'https://en.wikipedia.org' + constituency_anchor.get('href')
-    constituencies[name] = get_constituency_results(page_url, year)
+    constituencies[name] = get_constituency_results(page_url, 2015, parties)
 
 
 # Write data to file
-with open('./data/results_{}.json'.format(year), 'w+') as file:
+with open('./data/results_2015.json', 'w+') as file:
     json.dump(constituencies, file)
 
