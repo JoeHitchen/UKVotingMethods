@@ -14,18 +14,6 @@ with open('./data/results_2015.json') as file:
     results = json.load(file)
 
 
-# Loop over voting groups
-for key in groups:
-    group = groups[key]
-    
-    # Link parties
-    for const in group['Constituencies']:
-        for candidate in results[const]:
-            for party in parties:
-                if candidate['party'] in parties[party]['aliases']:
-                    candidate['party'] = party
-
-
 ## Prepare and run election
 # Loop over voting groups
 for key in groups:

@@ -4,7 +4,7 @@ import re
 
 
 # Primary constituency results scraper
-def get_constituency_results(page_url, year):
+def get_constituency_results(page_url, year, parties = None):
     """
     This method is the main constituency results scraper.
     The constituency page url and election year must be provided.
@@ -26,21 +26,21 @@ def get_constituency_results(page_url, year):
             
     # Try alternative scraper
     if not election_table:
-        return alternative_constituency_results(soup, year)
+        return alternative_constituency_results(soup, year, parties)
     
     # Process results table
     candidates = []
     for candidate in election_table.findChildren('tr', class_='vcard'):
         
         # Add candidate to list
-        candidates.append(get_candidate_from_row(candidate, 3))
+        candidates.append(get_candidate_from_row(candidate, 3, parties))
     
     # Return candidates
     return candidates
 
 
 # Alternative constituency results scraper
-def alternative_constituency_results(soup, year):
+def alternative_constituency_results(soup, year, parties = None):
     """
     This method scrapes election results from the alternative layout.
     The election year must be provided.
@@ -71,14 +71,14 @@ def alternative_constituency_results(soup, year):
     # Loop over candidate rows
     for row in rows[start_index:start_index+row_span]:
         vote_index = 6 if row == rows[start_index] else 3
-        candidates.append(get_candidate_from_row(row, vote_index))
+        candidates.append(get_candidate_from_row(row, vote_index, parties))
     
     # Return candidates
     return candidates
 
 
 # Candidate scraper
-def get_candidate_from_row(row, vote_index):
+def get_candidate_from_row(row, vote_index, parties):
     """
     This method takes a table row and extracts the candidate name, party, and vote tally.
     The name must be in a cell with class "fn" and the party must be in a cell with class "org".
@@ -98,6 +98,10 @@ def get_candidate_from_row(row, vote_index):
     if party.findChild('a'):
         party = party.findChild('a')
     party = str(party.contents[0])
+    if parties:
+        for party_to_match in parties:
+            if party in parties[party_to_match]['aliases']:
+                party = party_to_match
     
     # Get votes
     votes = row.findChildren('td')[vote_index]

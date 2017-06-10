@@ -6,6 +6,11 @@ import sys
 from wiki_scraper import get_constituency_results
 
 
+# Get parties list
+with open('./data/parties.json', encoding = 'utf-8') as file:
+    parties = json.load(file)
+
+
 # Get constituency list page
 request = get_request('https://en.wikipedia.org/wiki/Results_of_the_United_Kingdom_general_election,_2015_by_parliamentary_constituency')
 request.raise_for_status()
