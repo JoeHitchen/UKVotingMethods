@@ -1,0 +1,545 @@
+[
+  {
+    "tag": "Bed",
+    "name": "Bedfordshire",
+    "constituencies": ["Bedford", "Luton North", "Luton South", "Mid Bedfordshire", "North East Bedfordshire", "South West Bedfordshire"]
+  },
+  {
+    "tag": "Berk",
+    "name": "Berkshire",
+    "constituencies": ["Bracknell", "Maidenhead", "Newbury", "Reading East", "Reading West", "Slough", "Windsor", "Wokingham"]
+  },
+  {
+    "tag": "Bri",
+    "name": "Bristol and Bath",
+    "constituencies": ["Bristol East", "Bristol North West", "Bristol South", "Bristol West", "North East Somerset", "Bath", "Kingswood", "Filton and Bradley Stoke"]
+  },
+  {
+    "tag": "Buck",
+    "name": "Buckinghamshire",
+    "constituencies": ["Aylesbury", "Beaconsfield", "Buckingham", "Chesham and Amersham", "Milton Keynes North", "Milton Keynes South", "Wycombe"]
+  },
+  {
+    "tag": "Cam",
+    "name": "Cambridgeshire",
+    "constituencies": ["Cambridge", "Huntingdon", "North East Cambridgeshire", "North West Cambridgeshire", "Peterborough", "South Cambridgeshire", "South East Cambridgeshire"]
+  },
+  {
+    "tag": "Corn",
+    "name": "Cornwall",
+    "constituencies": ["Camborne and Redruth", "North Cornwall", "South East Cornwall", "St Austell and Newquay", "St Ives", "Truro and Falmouth"]
+  },
+  {
+    "tag": "Cum",
+    "name": "Cumbria",
+    "constituencies": ["Barrow and Furness", "Carlisle", "Copeland", "Penrith and The Border", "Westmorland and Lonsdale", "Workington"]
+  },
+  {
+    "tag": "NLan",
+    "name": "North Lancashire",
+    "constituencies": ["Morecambe and Lunesdale", "Lancaster and Fleetwood", "Wyre and Preston North", "Blackpool North and Cleveleys", "Blackpool South", "Fylde"]
+  },
+  {
+    "tag": "MLan",
+    "name": "Mid-Lancashire",
+    "constituencies": ["Preston", "Ribble Valley", "Pendle", "Burnley", "Hyndburn"]
+  },
+  {
+    "tag": "SLan",
+    "name": "South Lancashire",
+    "constituencies": ["Blackburn", "Rossendale and Darwen", "Chorley", "South Ribble", "West Lancashire"]
+  },
+  {
+    "tag": "IMer",
+    "name": "Inner Merseyside",
+    "constituencies": ["Bootle", "Liverpool, Walton", "Liverpool, Riverside", "Liverpool, Wavertree", "Liverpool, West Derby"]
+  },
+  {
+    "tag": "OMer",
+    "name": "Outer Merseyside",
+    "constituencies": ["Southport", "Sefton Central", "Knowsley", "St Helens North", "St Helens South and Whiston", "Garston and Halewood"]
+  },
+  {
+    "tag": "Wir",
+    "name": "Wirral",
+    "constituencies": ["Wallasey", "Birkenhead", "Wirral South", "Wirral West"]
+  },
+  {
+    "tag": "Ches",
+    "name": "Chester",
+    "constituencies": ["Ellesmere Port and Neston", "City of Chester", "Eddisbury", "Crewe and Nantwich", "Weaver Vale"]
+  },
+  {
+    "tag": "War",
+    "name": "Warrington",
+    "constituencies": ["Warrington North", "Warrington South", "Halton", "Congleton", "Macclesfield", "Tatton"]
+  },
+  {
+    "tag": "CMan",
+    "name": "Central Manchester",
+    "constituencies": ["Manchester Central", "Manchester, Gorton", "Manchester, Withington", "Blackley and Broughton", "Salford and Eccles", "Stretford and Urmston"]
+  },
+  {
+    "tag": "SMan",
+    "name": "South Manchester",
+    "constituencies": ["Altrincham and Sale West", "Wythenshawe and Sale East", "Cheadle", "Stockport", "Hazel Grove"]
+  },
+  {
+    "tag": "EMan",
+    "name": "East Manchester",
+    "constituencies": ["Denton and Reddish", "Stalybridge and Hyde", "Ashton-under-Lyne", "Oldham West and Royton", "Oldham East and Saddleworth"]
+  },
+  {
+    "tag": "NMan",
+    "name": "North Manchester",
+    "constituencies": ["Rochdale", "Heywood and Middleton", "Bury North", "Bury South", "Bolton South East", "Bolton West"]
+  },
+  {
+    "tag": "WMan",
+    "name": "West Manchester",
+    "constituencies": ["Bolton North East", "Leigh", "Worsley and Eccles South", "Makerfield", "Wigan"]
+  },
+  {
+    "tag": "NDer",
+    "name": "North Derbyshire",
+    "constituencies": ["Bolsover", "Chesterfield", "Derbyshire Dales", "High Peak", "North East Derbyshire"]
+  },
+  {
+    "tag": "SDer",
+    "name": "South Derbyshire",
+    "constituencies": ["Amber Valley", "Derby North", "Derby South", "Erewash", "Mid Derbyshire", "South Derbyshire"]
+  },  
+  {
+    "tag": "NDev",
+    "name": "North Devon",
+    "constituencies": ["Central Devon", "East Devon", "Exeter", "North Devon", "Tiverton and Honiton", "Torridge and West Devon"]
+  },
+  {
+    "tag": "SDev",
+    "name": "South Devon",
+    "constituencies": ["Newton Abbot", "Plymouth, Moor View", "Plymouth, Sutton and Devonport", "South West Devon", "Torbay", "Totnes"]
+  },
+  {
+    "tag": "Dor",
+    "name": "Dorset",
+    "constituencies": ["Bournemouth East", "Bournemouth West", "Christchurch", "Mid Dorset and North Poole", "North Dorset", "Poole", "South Dorset", "West Dorset"]
+  },
+  {
+    "tag": "ESsx",
+    "name": "East Sussex",
+    "constituencies": ["Hove", "Brighton, Pavilion", "Brighton, Kemptown", "Lewes", "Eastbourne", "Wealden", "Bexhill and Battle", "Hastings and Rye"]
+  },
+  {
+    "tag": "NEEsx",
+    "name": "North East Essex",
+    "constituencies": ["Clacton", "Harwich and North Essex", "Colchester", "Witham", "Braintree"]
+  },
+  {
+    "tag": "Tha",
+    "name": "Thames Estury",
+    "constituencies": ["Rochford and Southend East", "Rayleigh and Wickford", "Southend West", "Castle Point", "South Basildon and East Thurrock", "Thurrock"]
+  },
+  {
+    "tag": "SWEsx",
+    "name": "South West Essex",
+    "constituencies": ["Epping Forest", "Harlow", "Brentwood and Ongar", "Basildon and Billericay", "Maldon", "Chelmsford", "Saffron Walden"]
+  },
+  {
+    "tag": "Gls",
+    "name": "Gloucestershire",
+    "constituencies": ["Cheltenham", "Forest of Dean", "Gloucester", "Stroud", "Tewkesbury", "The Cotswolds", "Thornbury and Yate"]
+  },
+  {
+    "tag": "WHamp",
+    "name": "West Hampshire and IoW",
+    "constituencies": ["New Forest East", "New Forest West", "North West Hampshire", "Romsey and Southampton North", "Winchester", "Isle of Wight"]
+  },
+  {
+    "tag": "PrtSth",
+    "name": "Portsmouth and Southampton",
+    "constituencies": ["Southampton, Itchen", "Southampton, Test", "Eastleigh", "Fareham", "Gosport", "Portsmouth North", "Portsmouth South", "Havant"]
+  },
+  {
+    "tag": "EHamp",
+    "name": "East Hampshire",
+    "constituencies": ["Aldershot", "Basingstoke", "North East Hampshire", "East Hampshire", "Meon Valley"]
+  },
+  {
+    "tag": "H&W",
+    "name": "Hereford and Worcester",
+    "constituencies": ["Bromsgrove", "Mid Worcestershire", "Redditch", "West Worcestershire", "Worcester", "Wyre Forest", "Hereford and South Herefordshire", "North Herefordshire"]
+  },
+  {
+    "tag": "Srp",
+    "name": "Shropshire",
+    "constituencies": ["Ludlow", "North Shropshire", "Shrewsbury and Atcham", "Telford", "The Wrekin"]
+  },
+  {
+    "tag": "NStf",
+    "name": "North Staffordshire",
+    "constituencies": ["Staffordshire Moorlands", "Stoke-on-Trent North", "Stoke-on-Trent Central", "Stoke-on-Trent South", "Newcastle-under-Lyme", "Stone", "Burton"]
+  },  
+  {
+    "tag": "SStf",
+    "name": "South Staffordshire",
+    "constituencies": ["Tamworth", "Lichfield", "Cannock Chase", "Stafford", "South Staffordshire"]
+  },
+  {
+    "tag": "War",
+    "name": "Warwickshire",
+    "constituencies": ["Kenilworth and Southam", "North Warwickshire", "Nuneaton", "Rugby", "Stratford-on-Avon", "Warwick and Leamington"]
+  },
+  {
+    "tag": "Cov",
+    "name": "Coventry",
+    "constituencies": ["Coventry North East", "Coventry South", "Coventry North West", "Meriden", "Solihull"]
+  },
+  {
+    "tag": "CBhm",
+    "name": "Central Birmingham",
+    "constituencies": [
+      "Birmingham, Edgbaston", "Birmingham, Erdington", "Birmingham, Hall Green", "Birmingham, Hodge Hill",
+      "Birmingham, Ladywood", "Birmingham, Northfield", "Birmingham, Perry Barr", "Birmingham, Selly Oak", "Birmingham, Yardley"
+    ]
+  },
+  {
+    "tag": "NBhm",
+    "name": "North Birmingham",
+    "constituencies": ["Wolverhampton South West", "Wolverhampton North East", "Wolverhampton South East", "Walsall North", "Walsall South", "Aldridge-Brownhills", "Sutton Coldfield"]
+  },
+  {
+    "tag": "WBhm",
+    "name": "West Birmingham",
+    "constituencies": ["West Bromwich East", "West Bromwich West", "Dudley North", "Dudley South", "Stourbridge", "Halesowen and Rowley Regis", "Warley"]
+  },
+  {
+    "tag": "WHert",
+    "name": "West Hertfordshire",
+    "constituencies": ["Hemel Hempstead", "Hertsmere", "Hitchin and Harpenden", "South West Hertfordshire", "St Albans", "Watford"]
+  },
+  {
+    "tag": "EHert",
+    "name": "East Hertfordshire",
+    "constituencies": ["Broxbourne", "Hertford and Stortford", "North East Hertfordshire", "Stevenage", "Welwyn Hatfield"]
+  },
+  {
+    "tag": "SEKent",
+    "name": "South East Kent",
+    "constituencies": ["Canterbury", "Dover", "Folkestone and Hythe", "North Thanet", "South Thanet"]
+  },
+  {
+    "tag": "MKent",
+    "name": "Mid-Kent",
+    "constituencies": ["Ashford", "Faversham and Mid Kent", "Maidstone and The Weald", "Sittingbourne and Sheppey", "Tunbridge Wells"]
+  },
+  {
+    "tag": "NWKent",
+    "name": "North West Kent",
+    "constituencies": ["Chatham and Aylesford", "Dartford", "Gillingham and Rainham", "Gravesham", "Rochester and Strood", "Sevenoaks", "Tonbridge and Malling"]
+  },
+  {
+    "tag": "NLcs",
+    "name": "North Leicestershire",
+    "constituencies": ["Harborough", "Leicester East", "Leicester South", "Leicester West", "South Leicestershire"]
+  },
+  {
+    "tag": "SLcs",
+    "name": "South Leicestershire",
+    "constituencies": ["Bosworth", "Charnwood", "Loughborough", "North West Leicestershire", "Rutland and Melton"]
+  },
+  {
+    "tag": "Linc",
+    "name": "Lincolnshire",
+    "constituencies": ["Boston and Skegness", "Gainsborough", "Grantham and Stamford", "Lincoln", "Louth and Horncastle", "Sleaford and North Hykeham", "South Holland and The Deepings"]
+  },
+  {
+    "tag": "Lon1",
+    "name": "London 1",
+    "constituencies": ["Hornchurch and Upminster", "Romford", "Dagenham and Rainham", "Barking", "Ilford North", "Ilford South"]
+  },
+  {
+    "tag": "Lon2",
+    "name": "London 2",
+    "constituencies": ["East Ham", "West Ham", "Leyton and Wanstead", "Walthamstow", "Chingford and Woodford Green"]
+  },
+  {
+    "tag": "Lon3",
+    "name": "Greenwich & Bexley",
+    "constituencies": ["Erith and Thamesmead", "Bexleyheath and Crayford", "Old Bexley and Sidcup", "Eltham", "Greenwich and Woolwich"]
+  },
+  {
+    "tag": "Lon4",
+    "name": "London 4",
+    "constituencies": ["Orpington", "Bromley and Chislehurst", "Beckenham", "Croydon North", "Croydon Central", "Croydon South"]
+  },
+  {
+    "tag": "Lon5",
+    "name": "London 5",
+    "constituencies": ["Carshalton and Wallington", "Sutton and Cheam", "Mitcham and Morden", "Wimbledon", "Kingston and Surbiton", "Richmond Park", "Twickenham"]
+  },
+  {
+    "tag": "Lon6",
+    "name": "Putney and Lambeth",
+    "constituencies": ["Putney", "Battersea", "Tooting", "Streatham", "Vauxhall"]
+  },
+  {
+    "tag": "Lon7",
+    "name": "London 7",
+    "constituencies": ["Bermondsey and Old Southwark", "Camberwell and Peckham", "Dulwich and West Norwood", "Lewisham West and Penge", "Lewisham East", "Lewisham, Deptford"]
+  },
+  {
+    "tag": "Lon8",
+    "name": "London 8",
+    "constituencies": ["Feltham and Heston", "Brentford and Isleworth", "Ealing Central and Acton", "Ealing, Southall", "Ealing North", "Hayes and Harlington", "Uxbridge and South Ruislip"]
+  },
+  {
+    "tag": "Lon9",
+    "name": "London 9",
+    "constituencies": ["Ruislip, Northwood and Pinner", "Harrow West", "Harrow East", "Hendon", "Chipping Barnet", "Finchley and Golders Green"]
+  },
+  {
+    "tag": "Lon10",
+    "name": "London 10",
+    "constituencies": ["Brent North", "Brent Central", "Hammersmith", "Chelsea and Fulham", "Kensington"]
+  },
+  {
+    "tag": "Lon11",
+    "name": "London 11",
+    "constituencies": ["Hampstead and Kilburn", "Westminster North", "Cities of London and Westminster", "Holborn and St Pancras", "Islington North", "Islington South and Finsbury"]
+  },
+  {
+    "tag": "Lon12",
+    "name": "London 12",
+    "constituencies": ["Enfield North", "Enfield, Southgate", "Edmonton", "Hornsey and Wood Green", "Tottenham"]
+  },
+  {
+    "tag": "Lon13",
+    "name": "London 13",
+    "constituencies": ["Hackney North and Stoke Newington", "Hackney South and Shoreditch", "Bethnal Green and Bow", "Poplar and Limehouse"]
+  },
+  {
+    "tag": "Nor",
+    "name": "Norfolk",
+    "constituencies": ["Broadland", "Great Yarmouth", "Mid Norfolk", "North Norfolk", "North West Norfolk", "Norwich North", "Norwich South", "South Norfolk", "South West Norfolk"]
+  },
+  {
+    "tag": "NYk",
+    "name": "North Yorkshire",
+    "constituencies": ["Harrogate and Knaresborough", "Richmond (Yorks)", "Scarborough and Whitby", "Selby and Ainsty", "Skipton and Ripon", "Thirsk and Malton", "York Central", "York Outer"]
+  },
+  {
+    "tag": "NHum",
+    "name": "North Humberside",
+    "constituencies": ["East Yorkshire", "Beverley and Holderness", "Kingston upon Hull North", "Kingston upon Hull East", "Kingston upon Hull West and Hessle", "Haltemprice and Howden"]
+  },
+  {
+    "tag": "SHum",
+    "name": "South Humberside",
+    "constituencies": ["Great Grimsby", "Cleethorpes", "Brigg and Goole", "Scunthorpe"]
+  },
+  {
+    "tag": "DnBr",
+    "name": "Doncaster and Barnsley",
+    "constituencies": ["Barnsley Central", "Barnsley East", "Don Valley", "Doncaster Central", "Doncaster North", "Penistone and Stocksbridge", "Wentworth and Dearne"]
+  },
+  {
+    "tag": "Shef",
+    "name": "Sheffield",
+    "constituencies": ["Rother Valley", "Rotherham", "Sheffield, Brightside and Hillsborough", "Sheffield Central", "Sheffield, Hallam", "Sheffield, Heeley", "Sheffield South East"]
+  },
+  {
+    "tag": "Leeds",
+    "name": "Leeds",
+    "constituencies": ["Leeds Central", "Leeds East", "Leeds North East", "Leeds North West", "Leeds West", "Elmet and Rothwell", "Pudsey"]
+  },
+  {
+    "tag": "WkKk",
+    "name": "Wakefield and Kriklees",
+    "constituencies": ["Morley and Outwood", "Hemsworth", "Normanton, Pontefract and Castleford", "Wakefield", "Huddersfield", "Dewsbury", "Colne Valley", "Batley and Spen"]
+  },
+  {
+    "tag": "Brad",
+    "name": "Bradford",
+    "constituencies": ["Bradford East", "Bradford South", "Bradford West", "Keighley", "Shipley", "Halifax", "Calder Valley"]
+  },
+  {
+    "tag": "Nhm",
+    "name": "Northamptonshire",
+    "constituencies": ["Corby", "Daventry", "Kettering", "Northampton North", "Northampton South", "South Northamptonshire", "Wellingborough"]
+  },
+  {
+    "tag": "Cle",
+    "name": "Cleveland",
+    "constituencies": ["Middlesbrough South and East Cleveland", "Middlesbrough", "Redcar", "Stockton South", "Stockton North", "Hartlepool"]
+  },
+  {
+    "tag": "Dur",
+    "name": "County Durham",
+    "constituencies": ["Bishop Auckland", "City of Durham", "Darlington", "Easington", "North Durham", "North West Durham", "Sedgefield"]
+  },
+  {
+    "tag": "Sun",
+    "name": "Sunderland",
+    "constituencies": ["Houghton and Sunderland South", "Jarrow", "Washington and Sunderland West", "South Shields", "Sunderland Central"]
+  },
+  {
+    "tag": "NuT",
+    "name": "Newcastle upon Tyne",
+    "constituencies": ["Blaydon", "Gateshead", "Newcastle upon Tyne Central", "Newcastle upon Tyne East", "Newcastle upon Tyne North", "North Tyneside", "Tynemouth"]
+  },  
+  {
+    "tag": "Nul",
+    "name": "Northumberland",
+    "constituencies": ["Berwick-upon-Tweed", "Blyth Valley", "Hexham", "Wansbeck"]
+  },
+  {
+    "tag": "NNott",
+    "name": "North Nottinghamshire",
+    "constituencies": ["Ashfield", "Bassetlaw", "Mansfield", "Newark", "Sherwood"]
+  },
+  {
+    "tag": "SNott",
+    "name": "South Nottinghamshire",
+    "constituencies": ["Broxtowe", "Gedling", "Nottingham East", "Nottingham North", "Nottingham South", "Rushcliffe"]
+  },
+  {
+    "tag": "Oxf",
+    "name": "Oxfordshire",
+    "constituencies": ["Banbury", "Henley", "Oxford East", "Oxford West and Abingdon", "Wantage", "Witney"]
+  },
+  {
+    "tag": "Som",
+    "name": "Somerser",
+    "constituencies": ["Bridgwater and West Somerset", "Somerton and Frome", "Taunton Deane", "Wells", "Yeovil", "Weston-Super-Mare", "North Somerset"]
+  },
+  {
+    "tag": "Suf",
+    "name": "Suffolk",
+    "constituencies": ["Bury St Edmunds", "Central Suffolk and North Ipswich", "Ipswich", "South Suffolk", "Suffolk Coastal", "Waveney", "West Suffolk"]
+  },
+  {
+    "tag": "WSur",
+    "name": "West Surrey",
+    "constituencies": ["Guildford", "Runnymede and Weybridge", "South West Surrey", "Spelthorne", "Surrey Heath", "Woking"]
+  },
+  {
+    "tag": "ESur",
+    "name": "East Surrey",
+    "constituencies": ["East Surrey", "Epsom and Ewell", "Esher and Walton", "Mole Valley", "Reigate"]
+  },
+  {
+    "tag": "WSsx",
+    "name": "West Sussex",
+    "constituencies": ["Chichester", "Arundel and South Downs", "Bognor Regis and Littlehampton", "Worthing West", "East Worthing and Shoreham", "Horsham", "Crawley", "Mid Sussex"]
+  },
+  {
+    "tag": "Wlt",
+    "name": "Wiltshire",
+    "constituencies": ["Chippenham", "Devizes", "North Swindon", "North Wiltshire", "Salisbury", "South Swindon", "South West Wiltshire"]
+  },
+  {
+    "tag": "H&I",
+    "name": "Highlands and Islands",
+    "constituencies": ["Orkney and Shetland", "Caithness, Sutherland and Easter Ross", "Ross, Skye and Lochaber", "Na h-Eileanan an Iar", "Argyll and Bute", "Inverness, Nairn, Badenoch and Strathspey"]
+  },
+  {
+    "tag": "Abd",
+    "name": "Aberdeenshire and Moray",
+    "constituencies": ["Aberdeen North", "Aberdeen South", "Banff and Buchan", "Gordon", "West Aberdeenshire and Kincardine", "Moray"]
+  },
+  {
+    "tag": "MS",
+    "name": "Mid Scotland",
+    "constituencies": ["Perth and North Perthshire", "Angus", "Ochil and South Perthshire", "Stirling"]
+  },
+  {
+    "tag": "ES",
+    "name": "East Scotland",
+    "constituencies": ["Dundee West", "Dundee East", "North East Fife", "Glenrothes", "Kirkcaldy and Cowdenbeath", "Dunfermline and West Fife"]
+  },
+  {
+    "tag": "Ed",
+    "name": "Edinburgh",
+    "constituencies": ["Edinburgh East", "Edinburgh North and Leith", "Edinburgh South", "Edinburgh South West", "Edinburgh West"]
+  },
+  {
+    "tag": "GgwW",
+    "name": "Glasgow (West)",
+    "constituencies": ["Glasgow South West", "Glasgow North West", "Paisley and Renfrewshire North", "Paisley and Renfrewshire South", "East Renfrewshire", "West Dunbartonshire"]
+  },
+  {
+    "tag": "GgwC",
+    "name": "Glasgow (Central)",
+    "constituencies": ["Glasgow South", "Glasgow Central", "Glasgow North", "Glasgow North East", "East Dunbartonshire"]
+  },
+  {
+    "tag": "GgwE",
+    "name": "Glasgow (East)",
+    "constituencies": ["Glasgow East", "Coatbridge, Chryston and Bellshill", "East Kilbride, Strathaven and Lesmahagow", "Rutherglen and Hamilton West", "Lanark and Hamilton East", "Motherwell and Wishaw"]
+  },
+  {
+    "tag": "Flk",
+    "name": "Falkirk and Lowlands",
+    "constituencies": ["Livingston", "Airdrie and Shotts", "Linlithgow and East Falkirk", "Falkirk", "Cumbernauld, Kilsyth and Kirkintilloch East"]
+  },
+  {
+    "tag": "SWS",
+    "name": "South West Scotland",
+    "constituencies": ["Inverclyde", "North Ayrshire and Arran", "Kilmarnock and Loudoun","Central Ayrshire", "Ayr, Carrick and Cumnock"]
+  },
+  {
+    "tag": "Bor",
+    "name": "Scottish Borders",
+    "constituencies": ["Berwickshire, Roxburgh and Selkirk", "Dumfriesshire, Clydesdale and Tweeddale", "Dumfries and Galloway", "East Lothian", "Midlothian"]
+  },
+  {
+    "tag": "NWW",
+    "name": "North West Wales",
+    "constituencies": ["Ynys M\u00f4n", "Arfon", "Aberconwy", "Dwyfor Meirionnydd", "Montgomeryshire"]
+  },
+  {
+    "tag": "NEW",
+    "name": "North East Wales",
+    "constituencies": ["Clwyd West", "Vale of Clwyd", "Clwyd South", "Delyn", "Alyn and Deeside", "Wrexham"]
+  },
+  {
+    "tag": "MW",
+    "name": "Mid Wales",
+    "constituencies": ["Brecon and Radnorshire", "Ceredigion", "Carmarthen East and Dinefwr", "Carmarthen West and South Pembrokeshire", "Preseli Pembrokeshire"]
+  },
+  {
+    "tag": "Swan",
+    "name": "Swansea",
+    "constituencies": ["Llanelli", "Gower", "Swansea East", "Swansea West", "Neath", "Aberavon"]
+  },
+  {
+    "tag": "Cdf",
+    "name": "Cardiff and Newport",
+    "constituencies": ["Cardiff West", "Cardiff South and Penarth", "Cardiff North", "Cardiff Central", "Newport West", "Newport East"]
+  },
+  {
+    "tag": "SW",
+    "name": "South Wales",
+    "constituencies": ["Vale of Glamorgan", "Bridgend", "Ogmore", "Pontypridd", "Rhondda", "Cynon Valley"]
+  },
+  {
+    "tag": "SEW",
+    "name": "South East Wales",
+    "constituencies": ["Monmouth", "Torfaen", "Blaenau Gwent", "Islwyn", "Merthyr Tydfil and Rhymney", "Caerphilly"]
+  },
+  {
+    "tag": "Bel",
+    "name": "Belfast",
+    "constituencies": ["Belfast East", "Belfast North", "Belfast South", "Belfast West", "North Down"]
+  },
+  {
+    "tag": "NIN",
+    "name": "Northern Ireland (North)",
+    "constituencies": ["East Antrim", "East Londonderry", "Foyle", "Mid Ulster", "North Antrim", "South Antrim", "West Tyrone"]
+  },
+  {
+    "tag": "NIS",
+    "name": "Northern Ireland (South)",
+    "constituencies": ["Fermanagh and South Tyrone", "Lagan Valley", "Newry and Armagh", "South Down", "Strangford", "Upper Bann"]
+  }
+]
