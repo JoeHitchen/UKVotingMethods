@@ -1,5 +1,5 @@
 from unittest import TestCase
-from voting_engines import DirectElectionEngine
+from ..voting_engines import DirectElectionEngine
 
 
 # DirectElectionEngine.add_votes() tests
