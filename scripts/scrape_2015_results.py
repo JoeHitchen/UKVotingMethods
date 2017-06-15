@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup as Soup
 import json
 import sys
 
-from wiki_scraper import get_constituency_results
+from UKVotingMethods.wiki_scraper import get_constituency_results
 
 
 # Get parties list
